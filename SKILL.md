@@ -1,3 +1,8 @@
+---
+name: 双环思考
+description: "双环思考——不只修正错误，质疑产生错误的底层假设。"
+---
+
 # Double-Loop Learning
 
 A cognitive base that shifts reflection from fixing errors to questioning the assumptions that produce them. When something goes wrong, change the mental model — not just the behavior.
