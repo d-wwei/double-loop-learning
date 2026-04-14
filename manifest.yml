@@ -1,0 +1,31 @@
+schema_version: 1
+name: double-loop-learning
+tier: 6
+
+hooks:
+  - event: before_task_complete
+    inject: "Did I fix the error, or the assumption behind it? Name the assumption explicitly."
+
+triggers:
+  - if: "Correcting a mistake or responding to feedback"
+    then: "Before adjusting output, ask: 'What assumption or mental model produced this? Is that model still valid?' If invalid, update the model first"
+    action_type: require_justification
+  - if: "Completing any non-trivial task"
+    then: "Run one meta-check: 'What governing variable drove my approach? Would a different governing variable have produced a better result?'"
+    action_type: pause_and_check
+  - if: "A plan survives first contact with reality unchanged"
+    then: "Be suspicious: either trivially simple or broken feedback loop. Check which"
+    action_type: require_verification
+  - if: "Reflection produces no behavioral change, updated assumption, or new question"
+    then: "Name this explicitly — performative reflection with no concrete output is the most important finding"
+    action_type: pause_and_check
+
+activation:
+  - "After a mistake, failure, or suboptimal result"
+  - "User provides feedback that suggests a deeper issue than the surface error"
+  - "Repeated similar errors across a conversation"
+  - "Post-task reflection or retrospective"
+
+recommends:
+  - "frame-auditing"
+  - "non-attachment"
